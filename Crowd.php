@@ -28,7 +28,7 @@ class Crowd {
 
     function diagnostic($message) {
     	$debug = 0;
-    	if $debug {
+    	if ($debug == 1) {
     	    echo $message;	
     	}
     }
