@@ -26,6 +26,13 @@ class Crowd {
     private $crowd_config;
     private $crowd_app_token;
 
+    function diagnostic($message) {
+    	$debug = 0;
+    	if $debug {
+    	    echo $message;	
+    	}
+    }
+
     /**
      * Create an application client using the passed in configuration parameters.
      */
@@ -38,7 +45,7 @@ class Crowd {
         } catch (SoapFault $fault) {
 	    $faultcode = $fault->getCode();
 	    $faultstring = $fault->getMessage();
-            echo "SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}"; 
+            diagnostic("SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}"); 
             throw new CrowdConnectionException("Unable to connect to Crowd.  Verify the service_url property is defined and Crowd is running.");
         }
     }
@@ -54,7 +61,7 @@ class Crowd {
         } catch (SoapFault $fault) {
             $faultcode = $fault->getCode();
             $faultstring = $fault->getMessage();
-            echo "SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}";
+            diagnostic("SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}");
         }
 
         $this->crowd_app_token = $resp->out->token;
@@ -89,7 +96,7 @@ class Crowd {
         } catch (SoapFault $fault) {
             $faultcode = $fault->getCode();
             $faultstring = $fault->getMessage();
-            echo "SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}";
+            diagnostic("SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}");
             return null;
         }
 
@@ -118,7 +125,7 @@ class Crowd {
         } catch (SoapFault $fault) {
             $faultcode = $fault->getCode();
             $faultstring = $fault->getMessage();
-            echo "SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}";
+            diagnostic("SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}");
             return '';
         }
 
@@ -143,7 +150,7 @@ class Crowd {
         } catch (SoapFault $fault) {
             $faultcode = $fault->getCode();
             $faultstring = $fault->getMessage();
-            echo "SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}";
+            diagnostic("SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}");
         }
         return false;
     }
@@ -163,7 +170,7 @@ class Crowd {
         } catch (SoapFault $fault) {
             $faultcode = $fault->getCode();
             $faultstring = $fault->getMessage();
-            echo "SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}";
+            diagnostic("SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}");
             return null;
         }
     }
@@ -183,7 +190,7 @@ class Crowd {
         } catch (SoapFault $fault) {
             $faultcode = $fault->getCode();
             $faultstring = $fault->getMessage();
-            echo "SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}";
+            diagnostic("SOAP Fault: faultcode: {$faultcode}, faultstring: {$faultstring}");
             return null;
         }
     }
